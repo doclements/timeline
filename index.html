@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timeline.js Testing Page</title>
+	<script
+			  src="https://code.jquery.com/jquery-1.12.2.js"
+			  integrity="sha256-VUCyr0ZXB5VhBibo2DkTVhdspjmxUgxDGaLQx7qb7xY="
+			  crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.js" > </script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.css" />
+   <script src="/src/js/pikaday.jquery.js" ></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js" > </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js" ></script>
+	<script src="/src/js/timeline.js"></script>
+	<link rel="stylesheet" href="/src/css/timeline.css" />
+
+</head>
+<body>
+<p id="box"></p>
+   <div class="timeline-container" >
+      <h3>Timeline</h3>
+      <p> - Click and drag to move, use your mouse scroll wheel to zoom, click to select a date or enter your required date in the date field on the right</p>
+      <div class="timeline-inner">
+         <ul class="js-timeline-labels timeline-labels"></ul>
+         <div id="timeline" class=""></div>
+         <input class="js-current-date current-date" type="input" />
+      </div>
+   </div>
+
+</body>
+   	<script>
+	var timeline = new TimeLine('timeline', {
+		 comment: "Sample timeline data",
+      selectedDate: new Date("2015-06-05T00:00:00Z"),
+      chartMargins: {
+         top: 7,
+         right: 0,
+         bottom: 5,
+         left: 0
+      },
+      barHeight: 10,
+      barMargin: 2,
+      timebars: []
+	});
+
+
+	$('#box').on('date.selected', function(){
+		console.log('event triggered');
+		console.log(timeline.getDate());
+		$('#box').html(timeline.getDate());
+	});
+
+
+	var addTestLine = function(){
+		label = "a data layer"
+		name = "a data layer name"
+		startDate = "2010-06-05T00:00:00.000Z"
+		endDate  = "2015-06-05T00:00:00.000Z"
+		dt = ["2010-06-05T00:00:00.000Z","2011-06-05T00:00:00.000Z","2012-06-05T00:00:00.000Z","2013-06-05T00:00:00.000Z","2014-06-05T00:00:00.000Z","2015-06-05T00:00:00.000Z"]
+		LayerID = "LAYERID"
+		timeline.addTimeBar(label,LayerID, label, startDate, endDate, dt);
+	}
+	</script>
+</html>
