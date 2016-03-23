@@ -483,11 +483,12 @@ TimeLine.prototype.removeTimeBarById = function(id)  {
 
 // Remove a time bar by name (if found)
 TimeLine.prototype.removeTimeBarByName = function(name) {
-   var self = this,
+   var self = _this,
    type = "";
    
    function removeByName(anArray) {
       for (var j = 0; j < anArray.length; j++){
+         console.log(anArray[j]);
          if (anArray[j].name.toLowerCase() == name.toLowerCase()) {
             var bar = anArray[j];
             anArray.splice(j, 1);
